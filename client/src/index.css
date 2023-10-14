@@ -1,0 +1,144 @@
+
+@tailwind base;
+@tailwind components;
+
+/* header styles add here */
+
+.menu_item {
+  @apply text-[#070d54] font-semibold transition hover:text-[#3b82f6];
+}
+.current {
+  @apply text-gradient;
+}
+.btn {
+  @apply relative inline-block border-2 border-[#4f9fe2] px-8 py-3 text-sm font-bold uppercase tracking-widest text-white group-active:text-opacity-75
+}
+.container {
+  @apply mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8;
+}
+.btn_group {
+  @apply  relative inline-block focus:outline-none focus:ring;
+}
+
+/* banner styles add here */
+
+.clip_path_top{
+  clip-path: polygon(0 0, 100% 0%, 100% 85%, 50% 100%, 0 85%);
+}
+
+.clip_path_bottom{
+  clip-path: polygon(50% 10%, 100% 0, 100% 100%, 0 100%, 0 0);
+}
+
+.banner {
+  @apply bg-[url('assets/banner/banner3.png')] w-full h-screen bg-cover bg-no-repeat bg-center flex items-center justify-center relative isolate;
+}
+.big_text {
+  @apply animation-text-ltr xl:text-[200px] lg:text-[150px] md:text-[100px] sm:text-[30px] text-[30px] font-bold text-blue-100 absolute z-[-1] capitalize;
+}
+.heading1 {
+  @apply to-text-gradient xl:text-6xl lg:text-6xl md:text-4xl sm:text-4xl text-4xl font-extrabold text-transparent;
+}
+.banner_bottom {
+  @apply bg-[url('assets/banner/hero-bottom-shape.png')] w-full h-[25%] bg-cover bg-no-repeat bg-center absolute bottom-0;
+}
+
+/* counting styles add here */
+
+.light_bg{
+  @apply flex flex-wrap justify-around pt-8 pb-8 bg-slate-100 rounded-2xl shadow-2xl;
+}
+
+.confa_sec{
+  @apply w-full h-screen pt-12;
+}
+
+
+/* .input_label {
+  @apply peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6;
+} */
+
+.input_control{
+  @apply  w-full px-4 py-3 mt-3 flex-grow mb-2 transition duration-200 bg-[#fffff00] border border-purple-900 rounded shadow-sm appearance-none focus:outline-none focus:border-violet-500;
+}
+ 
+.inner_banner{
+  @apply  relative bg-[url('assets/Event/inner_bg2.jpg')] bg-cover bg-center bg-no-repeat w-full h-auto 
+}
+
+.log_bg {
+  @apply bg-[url('assets/Event/log_bg2.jpg')] w-full h-screen bg-cover bg-no-repeat bg-center;
+}
+
+.inner_box{
+  @apply custom-shadow  grid grid-cols-2 h-auto items-center gap-8 shadow-[2xl] bg-[#fffff00] 
+}
+
+.list_item{
+  @apply  text-white flex justify-start gap-5 cursor-pointer h-[50px] flex items-center pl-5
+}
+
+
+.active{
+  @apply cursor-pointer h-[50px] flex items-center pl-5 text-white mb-1 relative rounded-full z-10 bg-slate-100 before:content-[''] before:w-[30px] before:h-[30px] before:-mt-[30px] before:rotate-90 before:scale-[1.04] before:bg-[length:100%]  before:absolute before:top-0 before:right-[-5px] before:-mr-5 after:content-[''] after:w-[30px] after:h-[30px] after:mt-[50px] after:scale-[1.04] after:bg-[length:100%] after:bg-[url('assets/cruved.png')] after:absolute after:top-0 after:right-0 after:-mr-5 before:bg-[url('assets/cruved.png')] 
+}
+
+
+
+
+
+
+
+
+
+@tailwind utilities;
+
+@layer base {
+  .font-outline-2 {
+    -webkit-text-stroke: 2px black;
+  }
+  .font-outline-4 {
+    -webkit-text-stroke: 4px black;
+  }
+  .text-gradient {
+    background: #7579ff;
+    background: linear-gradient(to right, #7579ff 0%, #b224ef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .animation-text-ltr {
+    -webkit-animation: big-text 10s ease-in-out 1s infinite alternate backwards;
+    animation: big-text 10s ease-in-out 1s infinite alternate backwards;
+  }
+  .to-text-gradient {
+    background: #070d54;
+    background: linear-gradient(to left, #070d54 0%, #3b82f6 40%, #961e7e 95%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .footer-gradient {
+    background: rgb(0, 21, 129);
+    background: radial-gradient(
+      circle,
+      rgba(0, 21, 129, 1) 0%,
+      rgba(0, 44, 61, 1) 100%
+    );
+  }
+  .light-gradient {
+    background: rgb(0, 21, 129);
+    background: linear-gradient(
+      90deg,
+      rgba(0, 21, 129, 0.10416666666666663) 50%,
+      rgba(231, 84, 252, 0.08175770308123254) 100%
+    );
+  }
+}
+.custom-shadow{
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+
+@media only screen and (width <= 600px){
+  .clip_path_bottom{
+    clip-path: polygon(50% 5%, 100% 0, 100% 100%, 0 100%, 0 0);
+  }
+}
