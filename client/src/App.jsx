@@ -19,11 +19,13 @@ import Register from "./pages/Register/Register";
 import Users from "./pages/Users/Users";
 import Table from './pages/Users/Table';
 import DashboardLayout from "./dashboardLayout/DashboardLayout";
+import { AuthContext } from "./Contexts/AuthContext";
+import { useContext } from "react";
 
 function App() {
-
+  const { user, token } = useContext(AuthContext);
+  console.log('user', user, token);
   const location = useLocation();
-
   // Define an array of route paths where you want to hide the header and footer
   const routesToHideHeaderFooter = ['/login', '/register', '/eventrequest/:id', '/dashboard' ];
 
