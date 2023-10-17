@@ -6,15 +6,18 @@ import {
   controlUser,
   createUser,
   loginUser,
-  updateProfile
+  updateProfile,
+  listUsers
 } from "../controller/user.controller.mjs";
 
 const router = express.Router();
 
+router.get("/", listUsers);
 router.post("/signup", createUser);
 router.get("/confirm_email", confirmEmail);
 router.post("/login", loginUser);
 router.patch("/update", authentication, updateProfile);
-router.patch("/control/:email", authentication, authorization("admin"), controlUser);
+// router.patch("/control/:email", authentication, authorization("admin"), controlUser);
+router.patch("/control/:email", controlUser);
 
 export default router

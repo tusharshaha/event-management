@@ -1,5 +1,5 @@
 
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Outlet, Route, Routes, useLocation } from "react-router-dom";
 import Home from './pages/Home/Home';
 import Header from "./components/common/Header";
 import Footer from './components/common/Footer';
@@ -16,6 +16,8 @@ import Blog from "./pages/Blog/Blog";
 import BlogDetails from "./pages/Blog/BlogDetails";
 import Login from "./pages/login/Login";
 import Register from "./pages/Register/Register";
+import Users from "./pages/Users/Users";
+import Table from './pages/Users/Table';
 import DashboardLayout from "./dashboardLayout/DashboardLayout";
 
 function App() {
@@ -46,7 +48,10 @@ function App() {
         <Route path="/eventlist" element={<EventList/>} />
         <Route path="/eventrequest/:id" element={<EventRequest/>} />
         <Route path="/eventformdevelope" element={<EventFormDevelope/>} />
-        <Route path="/dashboard" element={<DashboardLayout />} />
+        <Route path='/dashboard/*' element={<DashboardLayout />}>
+            <Route path='users' element={<Users/>}/>
+        </Route>
+        
       </Routes>     
       {!shouldHideHeaderFooter && <Footer />}
     </>
