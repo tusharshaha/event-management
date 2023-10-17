@@ -68,7 +68,7 @@ const userSchema = new mongoose.Schema({
   providerId: String,
   status: {
     type: String,
-    default: "inactive",
+    default: "active",
     enum: ["active", "inactive", "blocked"],
   },
   confirmationToken: String,
@@ -122,7 +122,7 @@ userSchema.methods.generatePasswordResetToken = function () {
 };
 
 // automatically delete inactive user from database after 1 day
-userSchema.index({ confirmationTokenExpires: 1 }, { expireAfterSeconds: 0 });
+// userSchema.index({ confirmationTokenExpires: 1 }, { expireAfterSeconds: 0 });
 
 const User = mongoose.model("User", userSchema);
 

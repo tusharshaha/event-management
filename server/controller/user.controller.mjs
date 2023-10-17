@@ -4,6 +4,23 @@ import sendMail from "../utils/sendMail.mjs";
 import handleError from "../utils/errorHandler.mjs";
 import genereateJwt from "../utils/generateJwt.mjs";
 
+export async function listUsers(req, res) {
+  try {
+    // const users = await User.find({ status: "active" }).select("-password");
+    const users = await User.find().select("-password");
+    res.status(200).json({
+      success: true,
+      users
+    })
+  } catch (error) {
+    const message = handleError(error);
+    res.status(400).json({
+      success: false,
+      message
+    })
+  }
+}
+
 export async function createUser(req, res) {
   try {
     const { role, email, firstName, lastName, userImage } = req.body;
