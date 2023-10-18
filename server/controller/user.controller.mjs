@@ -156,3 +156,27 @@ export async function controlUser(req, res) {
     })
   }
 }
+
+export async function deleteUser(req, res){
+  try{
+    const email = req.params.email;
+    const result = await User.findOneAndDelete({email});
+    if(!result){
+      return res.status(404).json({
+        success:false,
+        message:"No user found!"
+      })}
+    else {
+      res.status(200).json({
+        success:true,
+        message:"User successfully deleted!"
+      })
+    }
+  } catch (error) {
+    const message = handleError(error);
+    res.status(400).json({
+      success:false,
+      message
+    })
+  }
+}
