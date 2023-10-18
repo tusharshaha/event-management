@@ -117,6 +117,11 @@ const Header = () => {
                       EventFormDevelope
                     </a>
                   </li>
+                  <li>
+                    <a className="menu_item" href="/dashboard">
+                      Dashboard
+                    </a>
+                  </li>
                 </ul>
               </nav>
 

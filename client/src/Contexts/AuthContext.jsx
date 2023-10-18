@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext();
 
@@ -23,6 +24,9 @@ const AuthContextProvider = ({ children }) => {
 	const login = (userData, token) => {
 		setUser(userData);
 		setToken(token);
+
+		localStorage.setItem('user', JSON.stringify(userData));
+		localStorage.setItem('token', JSON.stringify(token));
 	};
 
 	const logout = () => {
