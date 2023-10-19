@@ -4,9 +4,12 @@ import scrollLogo from "../../assets/logo/logo.png";
 import { Link } from "react-router-dom";
 import useWindowScroll from "../../hooks/useWindowScroll";
 import { BiMenu } from "react-icons/bi";
+import { AuthContext } from "../../Contexts/AuthContext";
+import { useContext } from "react";
 
 const Header = () => {
   const scroll = useWindowScroll();
+  const { user, logout } = useContext(AuthContext);
 
   //  windows scroll add class
 
@@ -31,7 +34,7 @@ const Header = () => {
   //   return () => window.removeEventListener("scroll", handleSticky);
   // });
 
-  //// responsive mobile menu open 
+  //// responsive mobile menu open
 
   const [isActive, setIsActive] = useState(false);
 
@@ -39,9 +42,6 @@ const Header = () => {
     setIsActive(!isActive);
     console.log("toggle");
   };
-
-
-
 
   //   const changeThemHeaderColor = [
   //     '/eventrequest',
@@ -55,8 +55,9 @@ const Header = () => {
   return (
     <>
       <header
-        className={`bg-transparent fixed top-0 left-0 w-full transition py-5 z-[111] h-fit hidden_header ${scroll > 50 && 'onscroll'} `}
-
+        className={`bg-transparent fixed top-0 left-0 w-full transition py-5 z-[111] h-fit hidden_header ${
+          scroll > 50 && "onscroll"
+        } `}
       >
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-8 items-center justify-between">
@@ -70,8 +71,9 @@ const Header = () => {
             <div className="md:flex md:items-center md:gap-12">
               <nav
                 aria-label="Global"
-                className={`hidden_mobile md:block ${isActive ? "menu_box" : ""
-                  }`}
+                className={`hidden_mobile md:block ${
+                  isActive ? "menu_box" : ""
+                }`}
               >
                 <ul className="flex items-center gap-6 text-base">
                   <li>
@@ -81,8 +83,7 @@ const Header = () => {
                   </li>
 
                   <li>
-                    <a className="menu_item" href="/">
-                    </a>
+                    <a className="menu_item" href="/"></a>
                   </li>
                   <li>
                     <a className="menu_item" href="/career">
@@ -116,16 +117,29 @@ const Header = () => {
                       EventFormDevelope
                     </a>
                   </li>
+                  <li>
+                    <a className="menu_item" href="/dashboard">
+                      Dashboard
+                    </a>
+                  </li>
                 </ul>
               </nav>
 
               <div className="flex items-center gap-4">
                 <div className="sm:flex sm:gap">
-                  <Link to='/login' className="btn_group group" >
-                    <span className="absolute inset-0 translate-x-1.5 translate-y-1.5 bg-[#4f9fe2] transition-transform group-hover:translate-y-0 group-hover:translate-x-0" />
+                  {user ? (
+                    <button onClick={()=>logout()} className="btn_group group">
+                      <span className="absolute inset-0 translate-x-1.5 translate-y-1.5 bg-[#4f9fe2] transition-transform group-hover:translate-y-0 group-hover:translate-x-0" />
 
-                    <span className="btn">Login</span>
-                  </Link>
+                      <span className="btn">Logout</span>
+                    </button>
+                  ) : (
+                    <Link to="/login" className="btn_group group">
+                      <span className="absolute inset-0 translate-x-1.5 translate-y-1.5 bg-[#4f9fe2] transition-transform group-hover:translate-y-0 group-hover:translate-x-0" />
+
+                      <span className="btn">Login</span>
+                    </Link>
+                  )}
                 </div>
 
                 <div className="hidden_menubar">

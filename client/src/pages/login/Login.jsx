@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
 import logBg from "../../assets/Event/form_bg3.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import axiosRequest from "../../utils/axios.service";
 
 const Login = () => {
+    const navigate = useNavigate();
+
     const inputClasses = "w-full px-4 py-3 flex-grow mb-2 transition duration-200 bg-[#1608080f] border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:border-violet-500 ";
     const passwordInputClasses = "w-full px-4 py-3  flex-grow  h-12 mb-2 transition duration-200 bg-[#1608080f] border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:border-violet-500 ";
     const btnGroupClasses = "btn_group group w-full block block_btn";
@@ -19,6 +22,22 @@ const Login = () => {
     // useEffect(() => {
     //     document.getElementsByClassName('hidden_footer')[0].style.display = 'none'
     // }, []);
+    
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        const username = e.target.username.value;
+        const password = e.target.password.value;
+        const data = {email:username, password};
+
+        const response = await axiosRequest.post('/user/login', data);
+        
+        if(response) {
+            console.log(response.data);
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+            navigate('/');
+        }
+    };
 
     return (
         <>
@@ -31,7 +50,7 @@ const Login = () => {
                         </div>
                         <div className="w-full h-full p-8 space-y-3 rounded-xl dark:text-gray-100">
                             <h1 className="text-2xl font-bold text-center">Login</h1>
-                            <form action="" className="space-y-6">
+                            <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="space-y-1 text-sm">
                                     <label
                                         htmlFor="username"

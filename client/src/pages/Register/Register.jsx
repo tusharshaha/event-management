@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import logBg from "../../assets/Event/form_bg3.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import axiosRequest from "../../utils/axios.service";
+import { AuthContext } from "../../Contexts/AuthContext";
+import { useContext } from "react";
 
 const Register = () => {
+    const { login } = useContext(AuthContext);
+    const navigate = useNavigate();
     const inputStyles =
         "w-full px-4 py-3 flex-grow mb-2 bg-[#1608080f] transition duration-200 border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:border-violet-500 ";
     const buttonStyles = "btn_group group w-full block block_btn";
@@ -67,6 +71,11 @@ const Register = () => {
                 // If no errors, you can submit the form data here using axiosRequest
                 const response = await axiosRequest.post("/user/signup", formData); // Adjust the API endpoint
                 console.log("Form submitted:", response);
+                if(response?.success == true) {
+                    console.log('inside success');
+                    login(response?.user, response?.user?.token);
+                    navigate('/');
+                }
             } catch (error) {
                 console.error("Error submitting form:", error);
             }

@@ -1,5 +1,5 @@
 
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Outlet, Route, Routes, useLocation } from "react-router-dom";
 import Home from './pages/Home/Home';
 import Header from "./components/common/Header";
 import Footer from './components/common/Footer';
@@ -16,18 +16,23 @@ import Blog from "./pages/Blog/Blog";
 import BlogDetails from "./pages/Blog/BlogDetails";
 import Login from "./pages/login/Login";
 import Register from "./pages/Register/Register";
+import Users from "./pages/Users/Users";
+import Table from './pages/Users/Table';
 import DashboardLayout from "./dashboardLayout/DashboardLayout";
+import { AuthContext } from "./Contexts/AuthContext";
+import { useContext } from "react";
 
 function App() {
-
+  const { user, token } = useContext(AuthContext);
+  
   const location = useLocation();
-
   // Define an array of route paths where you want to hide the header and footer
-  const routesToHideHeaderFooter = ['/login', '/register', '/eventrequest/:id', '/dashboard' ];
+  const routesToHideHeaderFooter = ['login', 'register', 'EventRequest', 'dashboard' ];
+
+  const locationArray = location.pathname.split('/').filter(Boolean);  
 
   // Check if the current route is in the array of routes to hide header and footer
-  const shouldHideHeaderFooter = routesToHideHeaderFooter.includes(location.pathname);
-
+  const shouldHideHeaderFooter = routesToHideHeaderFooter.some(route => locationArray.includes(route));
   
   return (
     <>
@@ -46,7 +51,10 @@ function App() {
         <Route path="/eventlist" element={<EventList/>} />
         <Route path="/eventrequest/:id" element={<EventRequest/>} />
         <Route path="/eventformdevelope" element={<EventFormDevelope/>} />
-        <Route path="/dashboard" element={<DashboardLayout />} />
+        <Route path='/dashboard/*' element={<DashboardLayout />}>
+            <Route path='users' element={<Users/>}/>
+        </Route>
+        
       </Routes>     
       {!shouldHideHeaderFooter && <Footer />}
     </>
