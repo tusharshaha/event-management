@@ -24,14 +24,15 @@ import { useContext } from "react";
 
 function App() {
   const { user, token } = useContext(AuthContext);
-  console.log('user', user, token);
+  
   const location = useLocation();
   // Define an array of route paths where you want to hide the header and footer
-  const routesToHideHeaderFooter = ['/login', '/register', '/eventrequest/:id', '/dashboard' ];
+  const routesToHideHeaderFooter = ['login', 'register', 'EventRequest', 'dashboard' ];
+
+  const locationArray = location.pathname.split('/').filter(Boolean);  
 
   // Check if the current route is in the array of routes to hide header and footer
-  const shouldHideHeaderFooter = routesToHideHeaderFooter.includes(location.pathname);
-
+  const shouldHideHeaderFooter = routesToHideHeaderFooter.some(route => locationArray.includes(route));
   
   return (
     <>
