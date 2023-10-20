@@ -67,7 +67,7 @@ const DashboardLayout = () => {
                 </Link>
               </li>
               <li>
-                <Link className={nonActiveListItem} to="#">
+                <Link className={nonActiveListItem} to="/dashboard/profile">
                   <div className={navListItemIconContainer}>
                     <TfiDashboard className={whiteNavListItemIcon} />
                   </div>
@@ -76,7 +76,7 @@ const DashboardLayout = () => {
                     <div className={navListItemTransition}></div>
                   </div>
                 </Link>
-                <Link className={nonActiveListItem} to="#">
+                <Link className={nonActiveListItem} to="/dashboard/users">
                   <div className={navListItemIconContainer}>
                     <TfiDashboard className={whiteNavListItemIcon} />
                   </div>
