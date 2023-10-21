@@ -110,7 +110,7 @@ const Header = () => {
                   </li>
                   <li>
                     <Link className="menu_item" to="/eventformdevelope">
-                      EventFormDevelope
+                      EFD
                     </Link>
                   </li>
                   <li>
