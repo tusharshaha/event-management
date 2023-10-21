@@ -62,10 +62,10 @@ const Header = () => {
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-8 items-center justify-between">
             <div className="flex-1 md:flex md:items-center md:gap-12">
-              <a className="block text-teal-600 w-40" href="/">
+              <Link className="block text-teal-600 w-40" to="/">
                 <img src={logo} alt="" className="logo" />
                 <img src={scrollLogo} alt="" className="scroll_logo" />
-              </a>
+              </Link>
             </div>
 
             <div className="md:flex md:items-center md:gap-12">
@@ -77,50 +77,46 @@ const Header = () => {
               >
                 <ul className="flex items-center gap-6 text-base">
                   <li>
-                    <a className="menu_item" href="/about">
+                    <Link className="menu_item" to="/about">
                       About
-                    </a>
-                  </li>
-
-                  <li>
-                    <a className="menu_item" href="/"></a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="menu_item" href="/career">
+                    <Link className="menu_item" to="/career">
                       Careers
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="menu_item" href="/services">
+                    <Link className="menu_item" to="/services">
                       Services
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a className="menu_item" href="/projects">
+                    <Link className="menu_item" to="/projects">
                       Projects
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a className="menu_item" href="/blog">
+                    <Link className="menu_item" to="/blog">
                       Blog
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="menu_item" href="/eventlist">
+                    <Link className="menu_item" to="/eventlist">
                       Event List
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="menu_item" href="/eventformdevelope">
-                      EventFormDevelope
-                    </a>
+                    <Link className="menu_item" to="/eventformdevelope">
+                      EFD
+                    </Link>
                   </li>
                   <li>
-                    <a className="menu_item" href="/dashboard">
+                    <Link className="menu_item" to="/dashboard">
                       Dashboard
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </nav>
