@@ -14,7 +14,8 @@ import {
   EventList,
   EventRequest,
   DashboardLayout,
-  Table
+  Table,
+  Users
 } from "./routes";
 import Layout from "../components/Layout";
 
@@ -36,6 +37,7 @@ const routes = createBrowserRouter(
       <Route path="eventformdevelope" element={<EventFormDevelope />} />
       <Route path="dashboard" element={<DashboardLayout />}>
         <Route index element={<Table />} />
+        <Route path='users' element={<Users />} />
       </Route>
     </Route>
   )
