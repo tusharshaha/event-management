@@ -21,6 +21,24 @@ export async function listUsers(req, res) {
   }
 }
 
+export async function profile(req, res) {
+  try {
+    console.log(req.user);
+    const id = req.user.id;
+    const user = await User.findById(id).select("-password");
+    res.status(200).json({
+      success: true,
+      user
+    })
+  } catch (error) {
+    const message = handleError(error);
+    res.status(400).json({
+      success: false,
+      message
+    })
+  }
+}
+
 export async function createUser(req, res) {
   try {
     const { role, email, firstName, lastName, userImage } = req.body;
