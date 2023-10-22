@@ -24,7 +24,6 @@ const Profile = () => {
           },
         })
         .then((data) => {
-					console.log(data);
           setFormData({
             name: `${data?.user.firstName} ${data?.user.lastName}`,
             email: data?.user.email,

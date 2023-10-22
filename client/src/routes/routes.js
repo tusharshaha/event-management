@@ -17,3 +17,5 @@ export { default as Users } from "../pages/Users/Users";
 export { default as DashboardLayout } from "../dashboardLayout/DashboardLayout";
 export { default as Table } from "../pages/Users/Table";
 export { default as Profile } from "../pages/Users/Profile";
+export { default as Events } from "../pages/Dashboard/Events";
+

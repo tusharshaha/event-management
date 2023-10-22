@@ -85,6 +85,15 @@ const DashboardLayout = () => {
                     <div className={navListItemTransition}></div>
                   </div>
                 </Link>
+                <Link className={nonActiveListItem} to="/dashboard/events">
+                  <div className={navListItemIconContainer}>
+                    <TfiDashboard className={whiteNavListItemIcon} />
+                  </div>
+                  <div className={whiteNavListItemText}>
+                    Event Requests
+                    <div className={navListItemTransition}></div>
+                  </div>
+                </Link>
               </li>
             </ul>
           </nav>

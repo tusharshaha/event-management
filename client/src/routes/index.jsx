@@ -16,7 +16,8 @@ import {
   DashboardLayout,
   Table,
   Users,
-  Profile
+  Profile,
+  Events
 } from "./routes";
 import Layout from "../components/Layout";
 
@@ -40,6 +41,7 @@ const routes = createBrowserRouter(
         <Route index element={<Table />} />
         <Route path='users' element={<Users />} />
         <Route path='profile' element={<Profile />}/>
+        <Route path='events' element={<Events />}/>
       </Route>
     </Route>
   )
