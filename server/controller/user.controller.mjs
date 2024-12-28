@@ -4,7 +4,10 @@ import sendMail from "../utils/sendMail.mjs";
 import handleError from "../utils/errorHandler.mjs";
 import genereateJwt from "../utils/generateJwt.mjs";
 
+
 export async function listUsers(req, res) {
+ 
+  console.log(males)
   try {
     // const users = await User.find({ status: "active" }).select("-password");
     const users = await User.find().select("-password");
